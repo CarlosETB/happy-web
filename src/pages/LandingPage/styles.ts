@@ -1,5 +1,6 @@
 // Native
 import { FiArrowRight } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -68,7 +69,7 @@ export const Strong = styled.strong`
     font-weight: 800;
 `
 
-export const Button = styled.a`
+export const Button = styled(Link)`
     right: 0;
     bottom: 0;
     width: 80px;

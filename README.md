@@ -59,6 +59,8 @@ As seguintes ferramentas foram usadas na construção do projeto:
 - **[i18next](https://www.i18next.com/)**
 - **[React i18next](https://www.i18next.com/)**
 - **[React Icons](https://react-icons.github.io/react-icons/)**
+- **[Leaflet](https://leafletjs.com/)**
+- **[React Leaflet](https://react-leaflet.js.org/)**
 
 \* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
 

@@ -1,8 +1,7 @@
 import React from 'react';
 
-// Assets
-import logoImg from '../../assets/images/logo.svg'
-import landing from '../../assets/images/landing.svg'
+// Shared
+import { Logo, LandingImage } from 'shared/images'
 
 // Private
 import { 
@@ -21,8 +20,8 @@ import {
 const LandingPage:React.FC = () => {
   return (
     <Container>
-      <Content src={landing}>
-        <Image src={logoImg} alt="Happy" />
+      <Content src={LandingImage}>
+        <Image src={Logo} alt="Happy" />
 
         <Main>
           <Title>
@@ -38,7 +37,7 @@ const LandingPage:React.FC = () => {
             <span>Paulínia</span>
           </Location>
 
-          <Button href="" className="enter-app">
+          <Button to='/map'>
             <Icon />
           </Button>
         </Main>
