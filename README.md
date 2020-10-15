@@ -1,44 +1,71 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Happy (Web)
 
-## Available Scripts
+<!-- PROJECT SHIELDS -->
 
-In the project directory, you can run:
+[![GitHub issues](https://img.shields.io/github/issues-raw/CarlosETB/happy-web.svg)](https://github.com/CarlosETB/happy-web/issues)
+[![GitHub last commit](https://img.shields.io/github/last-commit/CarlosETB/happy-web.svg)](https://github.com/CarlosETB/happy-web/commits/master)
+![GitHub language count](https://img.shields.io/github/languages/count/CarlosETB/happy-web?color=%2304D361)
+![GitHub repository size](https://img.shields.io/github/repo-size/CarlosETB/happy-web)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen)](https://github.com/CarlosETB/happy-web/stargazers)
 
-### `yarn start`
+<!-- PROJECT LOGO -->
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<p align="center">
+    <img height="100px" src='./src/assets/image/logo.svg' alt="Logo">
+</p>
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+<br />
 
-### `yarn test`
+<!-- TABLE OF CONTENTS -->
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tabela de Conteúdo
 
-### `yarn build`
+- [Tabela de Conteúdo](#tabela-de-conte%C3%BAdo)
+- [Sobre o Projeto](#sobre-o-projeto)
+- [Utilizando](#utilizando)
+- [Tecnologias](#tecnologias)
+- [Licença](#licen%C3%A7a)
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<br />
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+<!-- ABOUT THE PROJECT -->
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Sobre o Projeto
 
-### `yarn eject`
+Happy é um projeto desenvolvido com base no Dia das Crianças. O objetivo é conectar as pessoas a orfanatos que permitem tornar o dia das crianças mais especial.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<br />
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<!-- USING -->
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Utilizando
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Para iniciar o servidor
 
-## Learn More
+```sh
+    npm start
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<br />
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Tecnologias
+
+As seguintes ferramentas foram usadas na construção do projeto:
+
+- **[React](https://pt-br.reactjs.org/)**
+- **[JavaScript](https://www.javascript.com/)**
+- **[TypeScript](https://www.typescriptlang.org/)**
+- **[Styled Components](https://styled-components.com/)**
+- **[i18next](https://www.i18next.com/)**
+- **[React i18next](https://www.i18next.com/)**
+- **[React Icons](https://react-icons.github.io/react-icons/)**
+
+\* Veja o arquivo <kbd>[package.json](./package.json)</kbd>
+
+<br />
+
+<!-- LICENSE -->
+
+## Licença
+
+Distribuído sob a licença MIT. Veja [`LICENSE`](./LICENSE) para mais informações.
