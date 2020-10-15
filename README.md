@@ -11,7 +11,7 @@
 <!-- PROJECT LOGO -->
 
 <p align="center">
-    <img height="100px" src='./src/assets/image/logo.svg' alt="Logo">
+    <img height="100px" src='./src/assets/images/logo.svg' alt="Logo">
 </p>
 
 <br />
