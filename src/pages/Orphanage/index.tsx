@@ -3,25 +3,16 @@ import React from "react";
 // Native
 import { Map, Marker, TileLayer } from "react-leaflet";
 import { FiClock, FiInfo } from "react-icons/fi";
-import { useHistory } from 'react-router-dom';
 import { FaWhatsapp } from "react-icons/fa";
-import L from 'leaflet';
 
 // Components
 import SideBar from 'components/SideBar'
 
-// Shared
-import { MarkerImage } from 'shared/images';
+// Utils
+import mapIcon from 'utils/mapIcon'
 
+// Private
 import './styles.css';
-
-const happyMapIcon = L.icon({
-  iconUrl: MarkerImage,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60]
-})
 
 const Orphanage: React.FC = () => {
   return (
@@ -72,9 +63,9 @@ const Orphanage: React.FC = () => {
                   url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
                 />
                 
-                <Marker 
-                  interactive={false} 
-                  icon={happyMapIcon} 
+                <Marker  
+                  icon={mapIcon} 
+                  interactive={false}
                   position={[-27.2092052,-49.6401092]} 
                 />
               </Map>

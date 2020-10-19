@@ -5,21 +5,17 @@ import { Map, Marker, TileLayer } from 'react-leaflet';
 import { FiPlus } from "react-icons/fi";
 import L from 'leaflet';
 
+// Components
 import SideBar from 'components/SideBar'
 
 // Shared
 import { MarkerImage } from 'shared/images';
- 
+
+// Utils
+import mapIcon from 'utils/mapIcon'
+
 // Private
 import './styles.css';
-
-const happyMapIcon = L.icon({
-  iconUrl: MarkerImage,
-
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -60]
-})
 
 const CreateOrphanage: React.FC = () => {
   return (
@@ -40,9 +36,9 @@ const CreateOrphanage: React.FC = () => {
                     url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
                 />
 
-                <Marker 
-                    interactive={false} 
-                    icon={happyMapIcon} 
+                <Marker  
+                    icon={mapIcon} 
+                    interactive={false}
                     position={[-27.2092052,-49.6401092]} 
                 />
             </Map>

@@ -2,10 +2,12 @@ import React from 'react'
 
 // Native
 import { Map, TileLayer, Marker } from 'react-leaflet'
-import Leaflet from 'leaflet'
 
 // Shared
 import { MarkerImage } from 'shared/images'
+
+// Utils
+import mapIcon from 'utils/mapIcon'
 
 // Private
 import { 
@@ -23,13 +25,6 @@ import {
     Link,
     IconArrow
 } from './styles'
-
-const mapIcon = Leaflet.icon({
-    iconUrl: MarkerImage,
-    iconSize: [58, 68],
-    iconAnchor: [29, 68],
-    popupAnchor: [170, 2]
-})
 
 const OrphanagesMap: React.FC = () => {
     return (
