@@ -32,7 +32,7 @@
 
 ## Sobre o Projeto
 
-Happy é um projeto desenvolvido com base no Dia das Crianças. O objetivo é conectar as pessoas a orfanatos que permitem tornar o dia das crianças mais especial.
+**Happy** é um projeto desenvolvido com base no Dia das Crianças. O objetivo é conectar as pessoas a **orfanatos** que permitem tornar o dia das crianças mais especial. Se tratando essa da versão **Web**.
 
 <br />
 
