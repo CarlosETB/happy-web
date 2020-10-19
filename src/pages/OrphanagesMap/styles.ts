@@ -1,6 +1,7 @@
 // Native
-import { Link } from 'react-router-dom'
-import { FiPlus } from 'react-icons/fi'
+import { Popup as PopupLeaflet } from 'react-leaflet'
+import { Link as ReactLink } from 'react-router-dom'
+import { FiPlus, FiArrowRight } from 'react-icons/fi'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -45,9 +46,10 @@ export const Strong = styled.strong`
     font-weight: 800;
 `
 
-export const Button = styled(Link)`
+export const Button = styled(ReactLink)`
     right: 40px;
     width: 64px;
+    z-index: 10;
     bottom: 40px;
     height: 64px;
     display: flex;
@@ -62,7 +64,49 @@ export const Button = styled(Link)`
     }
 `
 
-export const Icon = styled(FiPlus).attrs({
+export const IconPlus = styled(FiPlus).attrs({
     size: 32,
+    color: '#fff'
+})``
+
+export const Popup = styled(PopupLeaflet).attrs({
+    minWidth: 240,
+    maxWidth: 240,
+    closeButton: false 
+})`
+    .leaflet-popup-content-wrapper {
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 20px;
+        box-shadow: none;
+    };
+
+    .leaflet-popup-content {
+        color: #0089a5;
+        font-size: 20px;
+        font-weight: bold;
+        margin: 8px 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    };
+
+    .leaflet-popup-tip-container {
+        display: none;
+    }
+`
+
+export const Link = styled(ReactLink)`
+    width: 40px;
+    height: 40px;
+    background: #15c3d6;
+    box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
+
+export const IconArrow = styled(FiArrowRight).attrs({
+    size: 20,
     color: '#fff'
 })``

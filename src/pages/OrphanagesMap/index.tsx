@@ -1,7 +1,8 @@
 import React from 'react'
 
-// Private
-import { Map, TileLayer } from 'react-leaflet'
+// Native
+import { Map, TileLayer, Marker } from 'react-leaflet'
+import Leaflet from 'leaflet'
 
 // Shared
 import { MarkerImage } from 'shared/images'
@@ -17,8 +18,18 @@ import {
     SideFooter,
     Strong,
     Button,
-    Icon
+    IconPlus,
+    Popup,
+    Link,
+    IconArrow
 } from './styles'
+
+const mapIcon = Leaflet.icon({
+    iconUrl: MarkerImage,
+    iconSize: [58, 68],
+    iconAnchor: [29, 68],
+    popupAnchor: [170, 2]
+})
 
 const OrphanagesMap: React.FC = () => {
     return (
@@ -37,15 +48,29 @@ const OrphanagesMap: React.FC = () => {
             </SideContainer>
 
             <Map 
-                center={[-22.7306128,-47.1849677]}
+                style={{ width: '100%', height: '100%', zIndex: 0 }} 
+                center={[-22.7306128,-47.1849677]} 
                 zoom={15}
-                style={{ width: '100%', height: '100%' }}
             >
-                <TileLayer url="https://a.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+                <TileLayer 
+                    url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
+                />
+
+                <Marker 
+                    icon={mapIcon}
+                    position={[-22.7306128,-47.1849677]} 
+                >
+                    <Popup>
+                        Lar das meninas
+                        <Link to=''>
+                            <IconArrow />
+                        </Link>
+                    </Popup>
+                </Marker>
             </Map>
             
             <Button to="" >
-                <Icon />
+                <IconPlus />
             </Button>
         </Container>
     )
