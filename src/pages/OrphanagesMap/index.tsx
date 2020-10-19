@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 // Native
 import { Map, TileLayer, Marker } from 'react-leaflet'
+
+// Services
+import api from 'services/api'
 
 // Shared
 import { MarkerImage } from 'shared/images'
@@ -26,7 +29,22 @@ import {
     IconArrow
 } from './styles'
 
+interface Orphanage {
+    id: number;
+    name: string;
+    latitude: number;
+    longitude: number;
+}
+
 const OrphanagesMap: React.FC = () => {
+    const [orphanates, setOrphanates] = useState<Orphanage[]>([])
+
+    useEffect(() => {
+        api.get('orphanages').then(response => {
+            setOrphanates(response.data)
+        })
+    }, [])
+
     return (
         <Container>
             <SideContainer>
@@ -50,18 +68,23 @@ const OrphanagesMap: React.FC = () => {
                 <TileLayer 
                     url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
                 />
-
-                <Marker 
-                    icon={mapIcon}
-                    position={[-22.7306128,-47.1849677]} 
-                >
-                    <Popup>
-                        Lar das meninas
-                        <Link to='/orphanages/1'>
-                            <IconArrow />
-                        </Link>
-                    </Popup>
-                </Marker>
+                
+               {orphanates.map(orphanage => {
+                   return (
+                        <Marker 
+                            icon={mapIcon}
+                            key={orphanage.id}
+                            position={[orphanage.latitude, orphanage.longitude]} 
+                        >
+                            <Popup>
+                                {orphanage.name}
+                                <Link to={`/orphanages/${orphanage.id}`}>
+                                    <IconArrow />
+                                </Link>
+                            </Popup>
+                        </Marker>
+                   )
+               })}
             </Map>
             
             <Button to="/orphanages/create" >
