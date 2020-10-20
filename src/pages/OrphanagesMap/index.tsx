@@ -37,11 +37,11 @@ interface Orphanage {
 }
 
 const OrphanagesMap: React.FC = () => {
-    const [orphanates, setOrphanates] = useState<Orphanage[]>([])
+    const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
     useEffect(() => {
         api.get('orphanages').then(response => {
-            setOrphanates(response.data)
+            setOrphanages(response.data)
         })
     }, [])
 
@@ -69,7 +69,7 @@ const OrphanagesMap: React.FC = () => {
                     url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
                 />
                 
-               {orphanates.map(orphanage => {
+               {orphanages.map(orphanage => {
                    return (
                         <Marker 
                             icon={mapIcon}

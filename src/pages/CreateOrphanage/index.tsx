@@ -3,13 +3,8 @@ import React from "react";
 // Native
 import { Map, Marker, TileLayer } from 'react-leaflet';
 import { FiPlus } from "react-icons/fi";
-import L from 'leaflet';
-
 // Components
 import SideBar from 'components/SideBar'
-
-// Shared
-import { MarkerImage } from 'shared/images';
 
 // Utils
 import mapIcon from 'utils/mapIcon'
