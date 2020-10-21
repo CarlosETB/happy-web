@@ -43,7 +43,7 @@ Happy é um projeto desenvolvido com base no Dia das Crianças. O objetivo é co
 Para iniciar o servidor
 
 ```sh
-    npm start
+    yarn start
 ```
 
 <br />
