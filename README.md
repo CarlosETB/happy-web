@@ -43,7 +43,7 @@
 Para iniciar o servidor
 
 ```sh
-    npm start
+    yarn start
 ```
 
 <br />
