@@ -56,7 +56,7 @@ export const ImageButton = styled.button.attrs({
     cursor: pointer;
     background: none;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 10px;
     ${({ actived }) =>  actived && 'opacity: 1'}
 `
 
@@ -93,7 +93,7 @@ export const MapContainer = styled.div`
     margin-top: 64px;
     background: #e6f7fb;
     border: 1px solid #b3dae2;
-    border-radius: 20px;
+    border-radius: 10px;
 `
 
 export const MapContainerFooter = styled.footer`
@@ -113,7 +113,7 @@ export const Map = styled(ReactMap).attrs({
     height: 280px;
     .leaflet-container {
         border-bottom: 1px solid #dde3f0;
-        border-radius: 20px;
+        border-radius: 10px;
     }
 `
 
@@ -175,7 +175,7 @@ export const ContactButton = styled.button.attrs({
     border: 0;
     cursor: pointer;
     background: #3cdc8c;
-    border-radius: 20px;
+    border-radius: 10px;
     color: #ffffff;
     font-weight: 800;
     display: flex;

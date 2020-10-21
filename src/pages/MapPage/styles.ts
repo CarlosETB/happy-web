@@ -56,7 +56,7 @@ export const Button = styled(ReactLink)`
     transition: 0.2s;
     position: absolute;
     background: #15c3d6;
-    border-radius: 20px;
+    border-radius: 10px;
     align-items: center;
     justify-content: center;
     &:hover {
@@ -76,7 +76,7 @@ export const Popup = styled(PopupLeaflet).attrs({
 })`
     .leaflet-popup-content-wrapper {
         background: rgba(255, 255, 255, 0.8);
-        border-radius: 20px;
+        border-radius: 10px;
         box-shadow: none;
     };
 

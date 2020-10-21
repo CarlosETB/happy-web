@@ -11,6 +11,7 @@ import { MarkerImage } from 'shared/images'
 
 // Utils
 import mapIcon from 'utils/mapIcon'
+import mapURL from 'utils/mapURL'
 
 // Private
 import { 
@@ -36,7 +37,7 @@ interface Orphanage {
     longitude: number;
 }
 
-const OrphanagesMap: React.FC = () => {
+const MapPage: React.FC = () => {
     const [orphanages, setOrphanages] = useState<Orphanage[]>([])
 
     useEffect(() => {
@@ -65,9 +66,7 @@ const OrphanagesMap: React.FC = () => {
                 center={[-22.7306128,-47.1849677]} 
                 zoom={15}
             >
-                <TileLayer 
-                    url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
-                />
+                <TileLayer url={mapURL} />
                 
                {orphanages.map(orphanage => {
                    return (
@@ -94,4 +93,4 @@ const OrphanagesMap: React.FC = () => {
     )
 }
 
-export default OrphanagesMap
+export default MapPage

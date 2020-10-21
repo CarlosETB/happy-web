@@ -13,6 +13,7 @@ import api from 'services/api'
 
 // Utils
 import mapIcon from 'utils/mapIcon'
+import mapURL from 'utils/mapURL'
 
 // Private
 import { 
@@ -59,7 +60,7 @@ interface RouteParams {
 }
 
 
-const Orphanage: React.FC = () => {
+const DetailPage: React.FC = () => {
   const params = useParams<RouteParams>() 
 
   const [orphanage, setOrphanage] = useState<Orphanage>()
@@ -106,9 +107,7 @@ const Orphanage: React.FC = () => {
 
             <MapContainer>
               <Map center={[orphanage.latitude, orphanage.longitude]}>
-                <TileLayer 
-                  url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
-                />
+                <TileLayer url={mapURL} />
                 
                 <Marker  
                   icon={mapIcon} 
@@ -159,4 +158,4 @@ const Orphanage: React.FC = () => {
   );
 }
 
-export default Orphanage
+export default DetailPage

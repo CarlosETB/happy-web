@@ -2,14 +2,23 @@ import React, { ChangeEvent, FormEvent, useState } from "react";
 
 // Native
 import { Map, Marker, TileLayer } from 'react-leaflet';
+import { useHistory } from 'react-router-dom'
 import { FiPlus } from "react-icons/fi";
-import { LeafletMouseEvent } from 'leaflet'
 
 // Components
 import SideBar from 'components/SideBar'
+import TextInput from 'components/TextInput'
+import TextArea from 'components/TextArea'
+
+// Hooks
+import { useForm } from 'hooks'
+
+// Services
+import api from "services/api";
 
 // Utils
 import mapIcon from 'utils/mapIcon'
+import mapURL from 'utils/mapURL'
 
 // Private
 import './styles.css';
@@ -19,44 +28,31 @@ interface PreviewImage {
   url: string;
 }
 
-const CreateOrphanage: React.FC = () => {
-  const [position, setPosition] = useState({
-    latitude: 0,
-    longitude: 0
-  })
-
-  const [formData, setFormData] = useState({
+const CreatePage: React.FC = () => {
+  const FormValues = {
     name: '',
     about: '',
     instructions: '',
     opening_hours: '',
-  });
+    latitude: 0,
+    longitude: 0,
+    open_on_weekends: false,
+  }
 
-  const [open_on_weekends, setOpenOnWeekends] = useState(false)
+  const history = useHistory()
+
+  const [formData, setFormData] = useState(FormValues);
+
+  const { 
+    handleOption,
+    handleMapClick,
+    handleInputChange, 
+    handleTextAreaChange 
+  } = useForm(setFormData)
 
   const [image, setImage] = useState<File[]>([])
   const [preview, setPreview] = useState<PreviewImage[]>([])
 
-  const handleMapClick = (event: LeafletMouseEvent) => {
-    const { lat, lng } = event.latlng
-
-    setPosition({
-      latitude: lat,
-      longitude:lng
-    })
-  }
-
-  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
-
-    setFormData({ ...formData, [name]: value });
-  }
-
-  function handleTextAreaChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    const { name, value } = event.target;
-
-    setFormData({ ...formData, [name]: value });
-  }
 
   function handleSelectImage(event: ChangeEvent<HTMLInputElement>) {
     if (!event.target.files) {
@@ -75,24 +71,37 @@ const CreateOrphanage: React.FC = () => {
     setPreview([ ...preview, ...selectedImagesPreview ]);
   }
   
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault()
 
-    const { latitude, longitude } = position
-    const { name, about, instructions, opening_hours } = formData
-
-    console.log(
-      name,
-      about,
-      instructions,
-      opening_hours,
+    const { 
+      name, 
+      about, 
+      instructions, 
+      opening_hours, 
       latitude, 
       longitude,
-      open_on_weekends,
-      image,
-      preview
-    )
+      open_on_weekends
+    } = formData
+
+    const data = new FormData()
+
+    data.append('name', name)
+    data.append('about', about)
+    data.append('instructions', instructions)
+    data.append('latitude', String(latitude))
+    data.append('longitude', String(longitude))
+    data.append('opening_hours', opening_hours)
+    data.append('open_on_weekends', String(open_on_weekends))
+    image.forEach(res => {
+      data.append('images', res)
+    })
+
+    await api.post('orphanages', data)
+
+    alert('Cadastro realizado com sucesso')
     
+    history.push('/map')
   }
   
   return (
@@ -110,17 +119,15 @@ const CreateOrphanage: React.FC = () => {
               zoom={15}
               onclick={handleMapClick}
             >
-                <TileLayer 
-                  url='https://a.tile.openstreetmap.org/{z}/{x}/{y}.png' 
-                />
+                <TileLayer url={mapURL} />
 
-                {position.latitude !== 0 
+                {formData.latitude !== 0 
                   && <Marker  
                       icon={mapIcon} 
                       interactive={false}
                       position={[
-                        position.latitude, 
-                        position.longitude
+                        formData.latitude, 
+                        formData.longitude
                       ]} 
                     />
                 }
@@ -132,20 +139,14 @@ const CreateOrphanage: React.FC = () => {
                 /> */}
             </Map>
 
-            <div className="input-block">
-              <label htmlFor="name">Nome</label>
-              <input id="name" name="name" onChange={handleInputChange} />
-            </div>
+            <TextInput label="Nome" name="name" onChance={handleInputChange}/>
 
-            <div className="input-block">
-              <label htmlFor="about">Sobre <span>Máximo de 300 caracteres</span></label>
-              <textarea 
-                id="about" 
-                name="about" 
-                maxLength={300} 
-                onChange={handleTextAreaChange}
-              />
-            </div>
+            <TextArea 
+              name="about" 
+              label="Sobre"
+              maxLength={300} 
+              onChance={handleTextAreaChange}
+            />
 
             <div className="input-block">
               <label htmlFor="images">Fotos</label>
@@ -171,39 +172,35 @@ const CreateOrphanage: React.FC = () => {
           <fieldset>
             <legend>Visitação</legend>
 
-            <div className="input-block">
-              <label htmlFor="instructions">Instruções</label>
-              <textarea 
-                id="instructions" 
-                name="instructions" 
-                onChange={handleTextAreaChange}
-              />
-            </div>
+            <TextArea 
+              label="Instruções"
+              name="instructions" 
+              onChance={handleTextAreaChange}
+            />
 
-            <div className="input-block">
-              <label htmlFor="opening_hours">Horátio de funcionamento</label>
-              <input 
-                id="opening_hours" 
-                name="opening_hours" 
-                onChange={handleInputChange}
-              />
-            </div>
+            <TextInput 
+              name="opening_hours" 
+              onChance={handleInputChange}
+              label="Horátio de funcionamento" 
+            />
 
             <div className="input-block">
               <label htmlFor="open_on_weekends">Atende fim de semana</label>
 
               <div className="button-select">
                 <button 
+                  name='true'
                   type="button" 
-                  onClick={() => setOpenOnWeekends(true)}
-                  className={open_on_weekends && "active"}
+                  onClick={handleOption}
+                  className={formData.open_on_weekends && "active"}
                 >
                   Sim
                 </button>
                 <button 
+                  name='false'
                   type="button"
-                  onClick={() => setOpenOnWeekends(false)}
-                  className={!open_on_weekends && "active"}
+                  onClick={handleOption}
+                  className={!formData.open_on_weekends && "active"}
                 >
                   Não
                 </button>
@@ -220,4 +217,4 @@ const CreateOrphanage: React.FC = () => {
   );
 }
 
-export default CreateOrphanage
+export default CreatePage

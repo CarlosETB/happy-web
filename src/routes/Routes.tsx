@@ -9,18 +9,18 @@ import {
 
 // Pages
 import LandingPage from 'pages/LandingPage'
-import OrphanagesMap from 'pages/OrphanagesMap'
-import CreateOrphanage from 'pages/CreateOrphanage'
-import Orphanage from 'pages/Orphanage'
+import MapPage from 'pages/MapPage'
+import CreatePage from 'pages/CreatePage'
+import DetailPage from 'pages/DetailPage'
 
 function Routes() {
     return (
         <Router>
             <Switch>
                 <Route path='/' component={LandingPage} exact/>
-                <Route path='/map' component={OrphanagesMap} exact />
-                <Route path='/orphanages/create' component={CreateOrphanage} exact />
-                <Route path='/orphanages/:id' component={Orphanage} exact />
+                <Route path='/map' component={MapPage} exact />
+                <Route path='/orphanages/create' component={CreatePage} exact />
+                <Route path='/orphanages/:id' component={DetailPage} exact />
             </Switch>
         </Router>
     )
